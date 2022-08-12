@@ -1,29 +1,29 @@
 const fs = require('fs');
 const filename = process.argv[2] || '';
 
-const GMan = require('./g-man/main.js');
+const GeekMan = require('./geek-man/main.js');
 
 filename &&
 fs.readFile(filename, 'utf8', (err, data) => {
     if (err) throw err
-    const gManPower = new GMan.GManPower();
+    const geekManPower = new GeekMan.GeekManPower();
     const lines = data.split('\n');
     for (const line of lines) {
         const inputs = line.split(' ');
         switch (inputs[0]) {
             case 'SOURCE':
-                const sourceXCoordinate = parseInt(inputs[1]);
-                const sourceYCoordinate = parseInt(inputs[2]);
+                const sourceAbscissa = parseInt(inputs[1]);
+                const sourceOrdinate = parseInt(inputs[2]);
                 const sourceDirection = inputs[3].charAt(0);
-                gManPower.setSourceParameters(sourceXCoordinate, sourceYCoordinate, sourceDirection);
+                geekManPower.setSourceParameters(sourceAbscissa, sourceOrdinate, sourceDirection);
                 break;
             case 'DESTINATION':
-                const destinationXCoordinate = parseInt(inputs[1]);
-                const destinationYCoordinate = parseInt(inputs[2]);
-                gManPower.setDestinationParameters(destinationXCoordinate, destinationYCoordinate);
+                const destinationAbscissa = parseInt(inputs[1]);
+                const destinationOrdinate = parseInt(inputs[2]);
+                geekManPower.setDestinationParameters(destinationAbscissa, destinationOrdinate);
                 break;
             case 'PRINT_POWER':
-                console.log(`POWER ${gManPower.getAvailablePowerUnits()}`);
+                console.log(`POWER ${geekManPower.getAvailablePowerUnits()}`);
                 return;
             default:
                 return;
