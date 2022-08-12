@@ -1,15 +1,15 @@
 import { GManDirections } from './enums';
 
-export const GMan = {
+export const GManConstraints = {
+    totalPowerUnits: 200,
     directionWeights: {
         [GManDirections.north]: 1, 
         [GManDirections.east]: 2, 
         [GManDirections.south]: 3, 
         [GManDirections.west]: 4 
     },
-    totalPowerUnits: 200,
-    costPerUnitDistance: 10,
-    costPerUnitTurn: 5
+    powerCostPerUnitDistance: 10,
+    powerCostPerUnitTurn: 5
 }
 
 
